@@ -1,0 +1,28 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/upload-artifact@v3
+        with:
+          name: public
+          path: public
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: public
+          path: public
+      - uses: w9jds/firebase-action@v12.9.0
+        with:
+          args: deploy --only hosting --project facultus-com
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

@@ -1,0 +1,52 @@
+:root {
+  --color-dark: #444;
+  --color-light: #ddd;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+body {
+  margin: 0;
+  color: var(--color-dark);
+  font-family: monospace, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+  list-style: none;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+.Container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+}

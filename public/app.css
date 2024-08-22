@@ -40,7 +40,7 @@ ol[class] {
   list-style: none;
 }
 
-ul {
+dd > ul {
   padding-inline-start: 0;
 }
 

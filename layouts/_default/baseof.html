@@ -4,7 +4,8 @@
     {{ partial "meta.html" . }}
   </head>
   <body>
-    <main class="Container">
+    {{ partial "header.html" . }}
+    <main class="container">
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}

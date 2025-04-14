@@ -13,12 +13,18 @@ html {
   word-wrap: break-word;
   overflow-wrap: break-word;
   text-underline-offset: 0.3em;
+
+  /* Therse are specifically defined besides upcoming Chromium behaves as default */
+  text-autospace: normal;
+  text-spacing-trim: auto;
 }
 
 body {
   margin: 0;
   color: var(--color-dark);
-  font-family: sans-serif;
+
+  /* Noto Sans is bundled on Windows 10/11 https://blogs.windows.com/windows-insider/2025/03/13/releasing-windows-11-build-22631-5116-to-the-release-preview-channel/ */
+  font-family: "Noto Sans", "Noto Sans CJK JP", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
 }
@@ -47,13 +53,32 @@ ol[class] {
   list-style: none;
 }
 
+ul {
+  padding-inline-start: 2em;
+}
+
 dd > ul {
   padding-inline-start: 0;
 }
 
-.Container {
+.container {
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 0 16px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 0.5em;
+  }
+}
+
+.navigation {
+  list-style: none;
+  display: flex;
+  gap: 0.5em;
 }

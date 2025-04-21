@@ -72,8 +72,10 @@ dd > ul {
   display: flex;
   align-items: center;
 
-  img {
-    margin-right: 0.5em;
+  svg {
+    width: 64px;
+    height: 64px;
+    margin-right: 0.25em;
   }
 }
 

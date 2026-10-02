@@ -71,12 +71,6 @@ dd > ul {
 .title {
   display: flex;
   align-items: center;
-
-  svg {
-    width: 64px;
-    height: 64px;
-    margin-right: 0.25em;
-  }
 }
 
 .navigation {

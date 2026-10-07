@@ -11,7 +11,7 @@
             <a href="#expectations" class="button button--ghost">ご相談例を見る</a>
           </div>
         </div>
-        <figure class="layers" aria-label="経営・組織・技術の三層を Facultus が横断する図">
+        <figure class="layers" aria-label="{{ delimit (apply $.Params.layers "index" "." "name") "・" }}を Facultus が横断する図">
           <div class="layers-stack">
             {{ range $.Params.layers }}
               <div class="layer">

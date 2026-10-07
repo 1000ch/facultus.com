@@ -12,7 +12,7 @@ eyebrow: COMPANY
 資本金
 : 100万円
 
-代表社員 CEO
+代表
 : [泉水 翔吾](https://shogosensui.com/)
 
 事業内容

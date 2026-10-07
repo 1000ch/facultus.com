@@ -1,3 +1,97 @@
+{{ define "masthead" }}
+  <div class="masthead masthead--dark">
+    {{ partial "header.html" . }}
+    {{ with .Params.hero }}
+      <section class="container hero">
+        <div class="hero-body">
+          <h1 class="hero-title">{{ .title | safeHTML }}</h1>
+          <p class="hero-lead">{{ .lead }}</p>
+          <div class="hero-actions">
+            <a href="#contact" class="button button--light">相談する {{ partial "arrow.html" }}</a>
+            <a href="#expectations" class="button button--ghost">ご相談例を見る</a>
+          </div>
+        </div>
+        <figure class="layers" aria-label="{{ delimit (apply $.Params.layers "index" "." "name") "・" }}を Facultus が横断する図">
+          <div class="layers-stack">
+            {{ range $.Params.layers }}
+              <div class="layer">
+                <span class="layer-name">{{ .name }}</span>
+                <span class="layer-label">{{ .label }}</span>
+              </div>
+            {{ end }}
+          </div>
+          <div class="layers-span" aria-hidden="true">
+            <span>FACULTUS</span>
+          </div>
+        </figure>
+      </section>
+    {{ end }}
+  </div>
+{{ end }}
+
 {{ define "main" }}
-  {{ .Content }}
+  {{ $layers := .Params.layers }}
+
+  {{ with .Params.expectations }}
+    <section id="expectations" class="container section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">{{ .eyebrow }}</p>
+          <h2 class="section-title">{{ .title }}</h2>
+        </div>
+        <p class="section-lead">{{ .lead }}</p>
+      </div>
+      <div class="ruled">
+        {{ range .items }}
+          {{ $active := .layers }}
+          <div class="reframe">
+            <p class="reframe-request">「{{ .request | safeHTML }}」</p>
+            <div class="reframe-body">
+              <p class="reframe-answer">{{ .answer }}</p>
+              <ul class="chips" aria-label="関わる層">
+                {{ range $layers }}
+                  {{ if in $active .name }}
+                    <li class="chip chip--active">{{ .name }}</li>
+                  {{ else }}
+                    <li class="chip">{{ .name }}</li>
+                  {{ end }}
+                {{ end }}
+              </ul>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  <section id="services" class="band">
+    <div class="container section">
+      <h2 class="section-title section-title--spaced">事業内容</h2>
+      <div class="services">
+        {{ range $i, $service := .Params.services }}
+          <article class="service">
+            <p class="service-number">{{ printf "%02d" (add $i 1) }}</p>
+            <h3 class="service-title">{{ $service.title | safeHTML }}</h3>
+            <p class="service-description">{{ $service.description }}</p>
+            <ul class="service-items">
+              {{ range $service.items }}<li>{{ . }}</li>{{ end }}
+            </ul>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section id="approach" class="container section">
+    <h2 class="section-title section-title--spaced">関わり方</h2>
+    <ol class="steps">
+      {{ range $i, $step := .Params.approach }}
+        <li class="step">
+          <p class="eyebrow">STEP {{ add $i 1 }}</p>
+          <h3 class="step-title">{{ $step.title }}</h3>
+          <p class="step-description">{{ $step.description }}</p>
+        </li>
+      {{ end }}
+    </ol>
+  </section>
 {{ end }}

@@ -11,7 +11,7 @@
             <a href="#expectations" class="button button--ghost">ご相談例を見る</a>
           </div>
         </div>
-        <figure class="layers" aria-label="{{ delimit (apply $.Params.layers "index" "." "name") "・" }}を Facultus が横断する図">
+        <figure class="layers" aria-label="課題が{{ delimit (apply $.Params.layers "index" "." "name") "・" }}の層を横断する図">
           <div class="layers-stack">
             {{ range $.Params.layers }}
               <div class="layer">
@@ -21,7 +21,7 @@
             {{ end }}
           </div>
           <div class="layers-span" aria-hidden="true">
-            <span>FACULTUS</span>
+            <span>ISSUE</span>
           </div>
         </figure>
       </section>
@@ -83,9 +83,14 @@
   </section>
 
   <section id="approach" class="container section">
-    <h2 class="section-title section-title--spaced">関わり方</h2>
+    {{ with .Params.approach }}
+      <div class="section-head">
+        <h2 class="section-title">{{ .title }}</h2>
+        <p class="section-lead">{{ .lead }}</p>
+      </div>
+    {{ end }}
     <ol class="steps">
-      {{ range $i, $step := .Params.approach }}
+      {{ range $i, $step := .Params.approach.steps }}
         <li class="step">
           <p class="eyebrow">STEP {{ add $i 1 }}</p>
           <h3 class="step-title">{{ $step.title }}</h3>
